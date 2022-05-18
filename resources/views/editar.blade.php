@@ -62,7 +62,7 @@
 			      	<label class="control-label col-sm-2" for="categoria">Categoría:</label>
 			      	<div class="col-sm-10">          
 			        	<select class="form-control" id="categoria_id"   name="categoria_id" aria-label="Default select example">
-			        		<option value="0">Seleccione...</option> 
+			        		<option value="">Seleccione...</option> 
 			        		@forelse($categorias as $categoriaItem)
 								@if($productos->categoria_id == $categoriaItem->id)
 			        				<option value="{{ $categoriaItem->id}}" selected>{{ $categoriaItem->nombre}}</option>
@@ -73,6 +73,7 @@
 								<td>No hay registros para mostrar</td>
 							@endforelse	
 			        	</select>
+			        	{!! $errors->first('categoria_id', '<small>:message</small><br>')  !!}	
 			      	</div>
 		    	</div>
 		    	<div class="form-group row">

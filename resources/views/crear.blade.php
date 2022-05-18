@@ -62,14 +62,14 @@
 			      	<label class="control-label col-sm-2" for="categoria">Categoría:</label>
 			      	<div class="col-sm-10">          
 			        	<select class="form-control" id="categoria_id"   name="categoria_id" aria-label="Default select example">
-			        		<option value="0">Seleccione...</option> 
-
+			        		<option value="">Seleccione...</option> 
 			        		@forelse($categorias as $categoriaItem)
 			        			<option value="{{ $categoriaItem->id}}">{{ $categoriaItem->nombre}}</option>
 							@empty
 								<td>No hay registros para mostrar</td>
-							@endforelse	
-			        	</select>			        	
+							@endforelse									        	
+			        	</select>
+			        	{!! $errors->first('categoria_id', '<small>:message</small><br>')  !!}		
 			      	</div>
 		    	</div>
 		    	<div class="form-group row">

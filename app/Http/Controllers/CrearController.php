@@ -47,7 +47,8 @@ class CrearController extends Controller
             'nombre' => 'required',
             'referencia' => 'required',
             'precio' => 'required',
-            'peso' => 'required',            
+            'peso' => 'required', 
+            'categoria_id' => 'required',             
             'stock' => 'required',
         ]);    
 
@@ -103,11 +104,12 @@ class CrearController extends Controller
             'nombre' => 'required',
             'referencia' => 'required',
             'precio' => 'required',
-            'peso' => 'required',            
+            'peso' => 'required',
+            'categoria_id' => 'required',            
             'stock' => 'required',
         ]);
 
-        
+
         $productos = Productos::findOrFail($id);
         
         $productos->update([
