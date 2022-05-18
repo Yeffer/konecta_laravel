@@ -45,8 +45,8 @@ WHERE STOCK IN (SELECT MAX(STOCK) FROM productos);
 ## consulta de ventas que más stock tiene.
 SELECT P.ID, P.NOMBRE, P.REFERENCIA, C.NOMBRE AS CATEGORIA, P.PRECIO, P.PESO, P.STOCK, V.cantidad AS CANTIDAD
 FROM productos P
-INNER JOIN ventas V ON P.ID = V.id_productos
-INNER JOIN categoria C ON P.ID_CATEGORIA = C.ID
+INNER JOIN ventas V ON P.ID = V.productos_id
+INNER JOIN categorias C ON P.categoria_id = C.ID
 WHERE V.cantidad IN (SELECT MAX(cantidad) FROM ventas);
 
 ## ####################
