@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Productos;
+use App\Categorias;
+use App\Ventas;
+use Illuminate\Http\Request;
 
 class VentaController extends Controller
 {
@@ -27,9 +29,38 @@ class VentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $id)
     {
-        //
+        $productos2 = Productos::findOrFail($id);        
+
+        $cantidadBase = $productos2->stock;
+        $cantidadVenta = $request->vetanCantidad;
+        $idProducto = $productos2->id;
+        
+        if($cantidadBase >= $cantidadVenta){
+            $total = ($cantidadBase - $cantidadVenta);
+            
+            
+            $productos2->update([                
+                'stock' => $total,                
+            ]);
+            
+            Ventas::create([
+                'productos_id' => $idProducto,
+                'cantidad' => $cantidadVenta,
+            ]);
+
+
+        }elseif($cantidadBase < $cantidadVenta){
+            return "No es posible realizar la venta";    
+        }        
+                
+        $productos = Productos::select('productos.id','productos.nombre AS nomProducto','productos.referencia','productos.precio','productos.peso','productos.stock','productos.created_at','categorias.nombre')        
+            ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
+            ->get();
+
+        return view('venta', compact('productos'));
+     
     }
 
     /**
@@ -38,9 +69,9 @@ class VentaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+       
     }
 
     /**

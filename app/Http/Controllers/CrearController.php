@@ -17,7 +17,6 @@ class CrearController extends Controller
     {
 
         $categorias = Categorias::select('categorias.id','categorias.nombre')->get();
-        //var_dump($categorias); die();
 
         return view('crear', compact('categorias'));
     }

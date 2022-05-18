@@ -13,11 +13,10 @@
 							<th>Nombre</th>
 							<th>Referencia</th>
 							<th>Precio</th>
-							<th>Peso Kg</th>
+							<th>Peso</th>
 							<th>Categoría</th>
 							<th>Cantidad</th>						
-							<th>Fecha creación</th>	
-							<th>Venta</th>	
+							<th>Fecha creación</th>							
 						</tr>
 					</thead>
 					<tbody>
@@ -30,19 +29,14 @@
 							<td>{{ $productoItem->peso }}</td>
 							<td>{{ $productoItem->nombre}}</td>
 							<td>{{ $productoItem->stock }}</td>
-							<td>{{ $productoItem->created_at }}</td>								
-							<td>				
-					        	<input type="text" 
-					        		   id="vetanCantidad"
-					        		   placeholder="Ingrese cantidad"
-					        		   name="vetanCantidad"
-					        		   class="form-control"
-					        		   >
-							</td>
-							<td>
-								<a href="{{ route('crear.edit', $productoItem->id ) }}"><button class='btn btn-danger btn-sm'>Venta</button></a>
-							</td>
+							<td>{{ $productoItem->created_at }}</td>														
+							<td>								
+								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-venta-{{ $productoItem->id }}">
+								  Venta
+								</button>									
+							</td>							
 						</tr>
+							@include('partials.venderProducto')
 							@empty
 								<td>No hay registros para mostrar</td>
 							@endforelse		

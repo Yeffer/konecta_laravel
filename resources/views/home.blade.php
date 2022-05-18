@@ -30,7 +30,9 @@
 								<td>{{ $productoItem->nombre}}</td>
 								<td>{{ $productoItem->stock }}</td>
 								<td>{{ $productoItem->created_at }}</td>								
-								<td><a href="{{ route('crear.edit', $productoItem->id ) }}"><button class='btn btn-success btn-sm'>Editar</button></a></td>
+								<td>
+									<a href="{{ route('crear.edit', $productoItem->id ) }}"><button class='btn btn-success btn-sm'>Editar</button></a>
+								</td>
 								<td>								
 									<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $productoItem->id }}">
 									  Eliminar
