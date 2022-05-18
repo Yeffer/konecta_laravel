@@ -64,11 +64,15 @@
 			        	<select class="form-control" id="categoria_id"   name="categoria_id" aria-label="Default select example">
 			        		<option value="0">Seleccione...</option> 
 			        		@forelse($categorias as $categoriaItem)
-			        			<option value="{{ $categoriaItem->id}}">{{ $categoriaItem->nombre}}</option>
+								@if($productos->categoria_id == $categoriaItem->id)
+			        				<option value="{{ $categoriaItem->id}}" selected>{{ $categoriaItem->nombre}}</option>
+			        			@else
+			                    	<option value="{{$categoriaItem->id}}"> {{ $categoriaItem->nombre }}</option>
+			                	@endif
 							@empty
 								<td>No hay registros para mostrar</td>
 							@endforelse	
-			        	</select>			        	
+			        	</select>
 			      	</div>
 		    	</div>
 		    	<div class="form-group row">

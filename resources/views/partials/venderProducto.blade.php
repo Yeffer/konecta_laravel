@@ -11,7 +11,7 @@
         <div class="modal-body">
           Deseas vender el producto?
         </div>
-        <input type="text" 
+        <input type="number" 
                          id="vetanCantidad"
                          placeholder="Ingrese cantidad"
                          name="vetanCantidad"
