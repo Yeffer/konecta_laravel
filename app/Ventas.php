@@ -8,7 +8,7 @@ class Ventas extends Model
 {
     //
     protected $fillable = [
-        'productos_id','cantidad'
+        'id','productos_id','cantidad'
     ];
 
 

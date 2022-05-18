@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Productos;
 use App\Categorias;
+use App\Ventas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CrearController extends Controller
 {
@@ -131,8 +133,19 @@ class CrearController extends Controller
     {
         
         $productos = Productos::findOrFail($id);
+        $idProducto = $productos->id;        
+        
+        $ventas = Ventas::where("productos_id", $idProducto)->get(); 
+                
+        foreach ($ventas as $ventaRow){
+            $idVenta = $ventaRow->productos_id;
+        }
+
+        DB::table('ventas')->where('productos_id', '=', $idVenta)->delete();
+
         $productos->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('home'); 
+
     }
 }

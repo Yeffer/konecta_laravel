@@ -120,6 +120,6 @@ class VentaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
