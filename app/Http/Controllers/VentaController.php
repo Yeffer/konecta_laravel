@@ -37,6 +37,10 @@ class VentaController extends Controller
         $cantidadVenta = $request->vetanCantidad;
         $idProducto = $productos2->id;
         
+        if($cantidadVenta == NULL || $cantidadVenta == ''){
+            return "No es posible realizar la venta: cantidad 0";
+        }
+
         if($cantidadBase >= $cantidadVenta){
             $total = ($cantidadBase - $cantidadVenta);
             
